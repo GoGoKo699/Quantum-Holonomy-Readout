@@ -56,7 +56,8 @@ jobs:
           capture() {
             node verification/hosted_math/capture_hosted_math.cjs \
               --root "$GITHUB_WORKSPACE/checked-source" \
-              --repository "$GITHUB_REPOSITORY" --revision "$CAPTURE_REVISION" "$@"
+              --repository "$GITHUB_REPOSITORY" --revision "$CAPTURE_REVISION" \
+              --contract verification/hosted_math/math-contract.json "$@"
           }
           first="$RUNNER_TEMP/hosted-first"
           if capture --output "$first"; then

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "expressions": [
+    {
+      "path": "README.md",
+      "index": 4,
+      "source_sha256": "a79b860ea8cf93bad6e6191fdce1d87e9bb461ba5f743eabedeeef356020fb27",
+      "required_text": [
+        "L=a+b+2ℓ"
+      ]
+    },
+    {
+      "path": "README.md",
+      "index": 7,
+      "source_sha256": "084c56c5da2e85527f3ba9a1ad70ee6a2f75143e37269c352f0a9015a0f9f457",
+      "required_text": [
+        "−2L"
+      ]
+    },
+    {
+      "path": "science/threshold.md",
+      "index": 43,
+      "source_sha256": "756de7867c07bbbb6850893b5894496f0398e462ee425c8db5f2492ca9a4d401",
+      "required_text": [
+        "L=a+b+2ℓ"
+      ]
+    },
+    {
+      "path": "science/noncommutation.md",
+      "index": 6,
+      "source_sha256": "1543b9757bb20895af49aee6883239bdfa9c4993984666f9837b66d99d356806",
+      "required_text": [
+        "2L=2a+2b+4ℓ"
+      ]
+    },
+    {
+      "path": "science/receiver.md",
+      "index": 29,
+      "source_sha256": "a0f942da9757557d7f21010ed47118697674d75a82b65bb2bfa54f92fe9480f7",
+      "required_text": [
+        "Tr(HW)",
+        "2n−L"
+      ]
+    },
+    {
+      "path": "science/receiver.md",
+      "index": 35,
+      "source_sha256": "771b126b3ae7e57cd2e7f7256b4c67d8ad070228103a98a30a0687be7dfb82de",
+      "required_text": [
+        "cosαcosβ",
+        "sinαsinβ",
+        "η"
+      ]
+    }
+  ]
+}
