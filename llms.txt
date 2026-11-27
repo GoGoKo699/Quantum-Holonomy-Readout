@@ -1,0 +1,18 @@
+# Quantum Holonomy Readout
+
+The repository studies the number of polarized photons needed in a common unknown local-frame window to compare rotations around two graph cycles. The receiver uses local time-bin interferometers and classical sign products.
+
+- [Overview and principal claims](README.md)
+- [Scientific reading map](science/README.md)
+- [State, gauge and operational task](science/model.md)
+- [Exact threshold and all-measurement converse](science/threshold.md)
+- [Optical receiver and delay construction](science/receiver.md)
+- [Visibility, state-window sample cost and optical imperfections](science/robustness.md)
+- [Four-mode noncommutation example](science/noncommutation.md)
+- [Learning route and educational source](learning/README.md)
+- [Eight-photon example](learning/WALKTHROUGH.md)
+- [30 milestones](learning/MILESTONES.md)
+- [Prior work and source boundaries](references/RELATED_WORK.md)
+- [Verification](verification/README.md)
+
+The photon threshold refers to the number arriving within one independently renewed frame window. The optical delay refers to the time between the two modes used in an individual local interference operation. The state model assumes one photon per selected bin and known common visibility.
