@@ -20,7 +20,7 @@ The simultaneous exchanges take $`s`$ to $`t`$ and back. They cyclically permute
 \begin{aligned}
 H_W&= U_{v_1v_L} U_{v_L v_{L-1}}\cdots U_{v_2v_1},\\
 \mu:=\mathbb E[Z]&=2\left(\frac{\epsilon}{dn}\right)^L
-                  \operatorname{Re}\operatorname{Tr}(H_W),\\
+                  \mathrm{Re}\mathrm{Tr}(H_W),\\
 q:=\mathbb E[Z^2]&=2 n^{-L}.
 \end{aligned}
 ```

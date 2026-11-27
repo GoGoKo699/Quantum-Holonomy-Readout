@@ -20,7 +20,7 @@ To prove the criterion, decompose $`\mathcal H^{\otimes j}`$ for $`j\le k`$ into
 When paired with the corresponding block of $`\rho^{\otimes j}`$ under the trace, each such product of permutations routes the polarization index at the output of a block $`\rho_{v_i u_i}`$ to an input index from the same station. Each block has exactly one successor and one predecessor. The resulting permutation of the $`j`$ block factors splits into cycles, with an index contraction of the form
 
 ```math
-\operatorname{tr}\!\left(\rho_{w_m w_{m-1}}\cdots\rho_{w_2 w_1}\rho_{w_1w_0}\right),
+\mathrm{tr}\!\left(\rho_{w_m w_{m-1}}\cdots\rho_{w_2 w_1}\rho_{w_1w_0}\right),
 \qquad w_m=w_0,
 ```
 
@@ -28,7 +28,7 @@ for each cycle. The lengths add up to $`j`$. Nonedge steps give zero. Thus all i
 
 ## Two SU(2) rotation axes
 
-Use the convention $`A=\cos\alpha\,I+i\sin\alpha\,\hat a\cdot\boldsymbol\sigma`$ and $`C=\cos\beta\,I+i\sin\beta\,\hat c\cdot\boldsymbol\sigma`$, with known $`\alpha,\beta\in(0,\pi)`$ and unit axes. The angles refer to a choice of orientation on each cycle. Reversing one cycle replaces its holonomy by its inverse and negates its axis under this convention. Fix the two orientations when defining $`\eta=\hat a\cdot\hat c`$.
+Use the convention $`A=\cos\alpha\,I+i\sin\alpha\,\hat a\cdot\sigma`$ and $`C=\cos\beta\,I+i\sin\beta\,\hat c\cdot\sigma`$, with known $`\alpha,\beta\in(0,\pi)`$ and unit axes. The angles refer to a choice of orientation on each cycle. Reversing one cycle replaces its holonomy by its inverse and negates its axis under this convention. Fix the two orientations when defining $`\eta=\hat a\cdot\hat c`$.
 
 For each closed walk, factor out the scalar weights before simplifying the unitary product. Stationary steps contribute identities. Immediate edge reversals cancel at the unitary level, including reversals across the start of the closed walk by cyclicity of the trace. In a reduced walk, entering a cycle from its junction requires a whole traversal before returning. Likewise, entering the bridge requires reaching its other junction before turning. A walk that traverses both cycles therefore uses at least $`a+b`$ cycle edges and at least $`2\ell`$ bridge edges. Shorter walks reduce either to the identity or to powers of a single holonomy, up to conjugation. Their traces depend only on the fixed angles. The scalar weights of the original walk are fixed across the alternatives.
 
@@ -40,10 +40,10 @@ L=a+b+2\ell,
 
 the criterion gives $`\Omega_k(\eta)=\Omega_k(\eta')`$ for all $`k\lt L`$ and all $`\eta,\eta'\in[-1,1]`$. No measurement, even a joint measurement across all stations, can distinguish those states. If frames are treated as arbitrary nuisance parameters instead of Haar draws, this equality still rules out a uniform guarantee over fresh, unconstrained frames in each window. An estimator with such a guarantee would also work after averaging each window independently. Frames stable across windows, calibrated reference signals, and extra photons in a time bin are different models.
 
-A walk of length $`L`$ can traverse both cycles and the bridge in both directions. Choose directions so that its polarization trace is $`\operatorname{tr}(AC)`$. Pauli multiplication gives
+A walk of length $`L`$ can traverse both cycles and the bridge in both directions. Choose directions so that its polarization trace is $`\mathrm{tr}(AC)`$. Pauli multiplication gives
 
 ```math
-\operatorname{tr}(AC)
+\mathrm{tr}(AC)
 =2\bigl(\cos\alpha\cos\beta-\eta\sin\alpha\sin\beta\bigr).
 ```
 

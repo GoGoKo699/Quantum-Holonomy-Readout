@@ -7,8 +7,8 @@ The [model](model.md) supplies one photon per input time bin on a graph with $`n
 Fix two link assignments on the graph whose first differing Wilson trace occurs at length $`L`$. Suppose the receiver's chosen length-$`L`$ walk $`W`$ has a fixed real trace gap
 
 ```math
-g=\left|\operatorname{Re}\operatorname{tr}(H_{W,0})
-             -\operatorname{Re}\operatorname{tr}(H_{W,1})\right|\gt 0,
+g=\left|\mathrm{Re}\mathrm{tr}(H_{W,0})
+             -\mathrm{Re}\mathrm{tr}(H_{W,1})\right|\gt 0,
 ```
 
 where $`H_{W,h}`$ is the ordered link product for hypothesis $`h`$. In the two-cycle $`SU(2)`$ model the traces are real. Keep the graph, link assignments, and copy cap $`K\ge L`$ fixed as $`\epsilon\to0`$. For $`0\lt \delta\le1/4`$, the number of independent windows required to distinguish the hypotheses with error at most $`\delta`$ under either one satisfies
@@ -26,7 +26,7 @@ Let $`Y\in\{-1,0,1\}`$ be the product of the signed detector outputs in a window
 
 ```math
 \mu_h=\mathbb E_h[Y]=2\left(\frac{\epsilon}{2n}\right)^L
-                      \operatorname{Re}\operatorname{tr}(H_{W,h}),
+                      \mathrm{Re}\mathrm{tr}(H_{W,h}),
 \qquad
 p=\mathbb E_h[Y^2]=2n^{-L}.
 ```
@@ -60,11 +60,11 @@ The first inequality uses contractivity of a unitary twirl in operator norm. The
 For full-rank states $`\rho,\sigma`$, the quantum relative entropy, in natural logarithms, satisfies
 
 ```math
-D(\rho\|\sigma)\le\log\operatorname{tr}(\rho^2\sigma^{-1})
+D(\rho\|\sigma)\le\log\mathrm{tr}(\rho^2\sigma^{-1})
 \le \frac{\|\rho-\sigma\|_2^2}{\lambda_{\min}(\sigma)}.
 ```
 
-For the first inequality, expand the entropy in the two eigenbases and apply Jensen's inequality to the logarithm with weights $`p_i|\langle i|j\rangle|^2`$, where $`p_i`$ is an eigenvalue of $`\rho`$. For the second, use $`\operatorname{tr}(\rho^2\sigma^{-1})=1+\operatorname{tr}[(\rho-\sigma)^2\sigma^{-1}]`$ and $`\log(1+x)\le x`$. Here $`\|\cdot\|_2`$ denotes the Hilbert–Schmidt norm. The spectral and operator-norm bounds give
+For the first inequality, expand the entropy in the two eigenbases and apply Jensen's inequality to the logarithm with weights $`p_i|\langle i|j\rangle|^2`$, where $`p_i`$ is an eigenvalue of $`\rho`$. For the second, use $`\mathrm{tr}(\rho^2\sigma^{-1})=1+\mathrm{tr}[(\rho-\sigma)^2\sigma^{-1}]`$ and $`\log(1+x)\le x`$. Here $`\|\cdot\|_2`$ denotes the Hilbert–Schmidt norm. The spectral and operator-norm bounds give
 
 ```math
 D(\sigma_0\|\sigma_1)
@@ -84,19 +84,19 @@ Let the frame at station $`v`$ and physical time $`t`$ be $`G_v(t)\in U(2)`$. Co
 ```math
 D_i=G_{v_i}(t_{i-1})^\dagger G_{v_i}(t_i),
 \qquad
-H_W^{\rm drift}=U_{v_1 v_2}D_2 U_{v_2 v_3}D_3\cdots
+H_W^{\mathrm{drift}}=U_{v_1 v_2}D_2 U_{v_2 v_3}D_3\cdots
                  U_{v_L v_1}D_1.
 ```
 
 With the same normalization $`2(\epsilon/(2n))^L`$ as above, the measured real trace has additive bias bounded by
 
 ```math
-\left|\operatorname{Re}\operatorname{tr}(H_W^{\rm drift})
-       -\operatorname{Re}\operatorname{tr}(H_W)\right|
+\left|\mathrm{Re}\mathrm{tr}(H_W^{\mathrm{drift}})
+       -\mathrm{Re}\mathrm{tr}(H_W)\right|
  \le 2\sum_{i=1}^L\|D_i-I_2\|_\infty .
 ```
 
-To obtain the bound, replace the factors $`D_i`$ by identities one at a time and use that the surrounding factors are unitary. If each station's change in operator norm per bin spacing is at most $`\eta_{\rm drift}`$, the two-bin schedule gives bias at most $`4L\eta_{\rm drift}`$. This is a bound on the normalized signal, even at weak visibility. The ideal second moment is unchanged because unitary frame transformations preserve site occupation probabilities. A known ideal gap $`g`$ remains distinguishable by the same midpoint under independent windows when the trace bias bound is below $`g/2`$. The exact copy threshold above uses frame constancy within each window and independent Haar renewals between windows.
+To obtain the bound, replace the factors $`D_i`$ by identities one at a time and use that the surrounding factors are unitary. If each station's change in operator norm per bin spacing is at most $`\eta_{\mathrm{drift}}`$, the two-bin schedule gives bias at most $`4L\eta_{\mathrm{drift}}`$. This is a bound on the normalized signal, even at weak visibility. The ideal second moment is unchanged because unitary frame transformations preserve site occupation probabilities. A known ideal gap $`g`$ remains distinguishable by the same midpoint under independent windows when the trace bias bound is below $`g/2`$. The exact copy threshold above uses frame constancy within each window and independent Haar renewals between windows.
 
 ## Photon counting and loss
 
@@ -108,7 +108,7 @@ For an exact attenuation model, let $`\eta_{v,i}\in[0,1]`$ be the calibrated inp
 \begin{aligned}
 \mathbb E_h[Y]
  &=2\left(\frac{\epsilon}{2n}\right)^L
-      \operatorname{Re}\operatorname{tr}(H_{W,h})
+      \mathrm{Re}\mathrm{tr}(H_{W,h})
        \prod_{i=1}^L\sqrt{\eta_{v_i,i}\eta_{v_{i+1},i}},
 \\
 \mathbb E_h[Y^2]
