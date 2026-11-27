@@ -1,0 +1,89 @@
+name: Hosted mathematics validation
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hosted-math-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  capture:
+    if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      CAPTURE_REVISION: 5ba21bfdbfee8ddafea194ec5f7f1530f5c6fb4e
+    steps:
+      - name: Check out the validation helpers
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - name: Check out the exact scientific source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.CAPTURE_REVISION }}
+          path: checked-source
+          persist-credentials: false
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install the pinned capture runtime
+        run: |
+          npm install --prefix "$RUNNER_TEMP/math-runtime" playwright@1.56.1 mathjax-full@3.2.1
+          node "$RUNNER_TEMP/math-runtime/node_modules/playwright/cli.js" install chromium
+      - name: Probe representative hosted mathematics
+        env:
+          NODE_PATH: ${{ runner.temp }}/math-runtime/node_modules
+        run: |
+          node verification/hosted_math/probe_hosted_math.cjs \
+            --root "$GITHUB_WORKSPACE/checked-source" \
+            --repository "$GITHUB_REPOSITORY" --revision "$CAPTURE_REVISION" \
+            --page science/receiver.md --output "$RUNNER_TEMP/hosted-probe" || \
+            echo "Representative probe recorded a diagnostic failure"
+      - name: Compare every hosted mathematical expression
+        if: ${{ !cancelled() }}
+        env:
+          NODE_PATH: ${{ runner.temp }}/math-runtime/node_modules
+        run: |
+          capture() {
+            node verification/hosted_math/capture_hosted_math.cjs \
+              --root "$GITHUB_WORKSPACE/checked-source" \
+              --repository "$GITHUB_REPOSITORY" --revision "$CAPTURE_REVISION" "$@"
+          }
+          first="$RUNNER_TEMP/hosted-first"
+          if capture --output "$first"; then
+            exit 0
+          fi
+          python3 - "$first/capture-state.json" <<'PY'
+          import json
+          import re
+          import sys
+
+          with open(sys.argv[1]) as stream:
+              failures = json.load(stream)["failures"]
+          if not failures or not all(
+              re.fullmatch(r"Error: HTTP (502|503|504)", item["reason"])
+              for item in failures
+          ):
+              raise SystemExit("Failure set includes a nontransient cause.")
+          PY
+          capture --output "$RUNNER_TEMP/hosted-resumed" --resume-from "$first"
+      - name: Retain the actual captures and comparison reports
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: hosted-math-${{ env.CAPTURE_REVISION }}-attempt-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/hosted-probe
+            ${{ runner.temp }}/hosted-first
+            ${{ runner.temp }}/hosted-resumed
+          if-no-files-found: warn
+          retention-days: 7
